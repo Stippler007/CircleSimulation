@@ -58,22 +58,20 @@ public class GameLogic
           break;
         }
       }
+
       if (helpCircle != null)
       {
-        helpCircle.setMass(helpCircle.getMass()+10*tslf);
+        helpCircle.setMass(helpCircle.getMass() + 10 * tslf);
       }
-      else
+      else if (timer >= maxTimer)
       {
-        if (timer >= maxTimer)
-        {
-          circles.add(new Circle(touchX, touchY, 10, circles, circlePaint));
-          timer -= maxTimer;
-        }
-        else if (timer < maxTimer)
-        {
-          timer += tslf;
-        }
+        circles.add(new Circle(touchX, touchY, 10, circles, circlePaint));
+        timer -= maxTimer;
       }
+    }
+    if (timer < maxTimer)
+    {
+      timer += tslf;
     }
 
     for (Circle c : circles)
